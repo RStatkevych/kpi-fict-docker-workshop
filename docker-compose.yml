@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  application:
+    build:
+      context: .
+    ports:
+      - "7777:7777"
+
+  database:
+    image: postgres:9.6
+    environment:
+      POSTGRES_PASSWORD: S0meP@ssw0rd
+      POSTGRES_DB: test
+    volumes:
+      - ./db/:/docker-entrypoint-initdb.d
